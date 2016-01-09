@@ -1,0 +1,34 @@
+<div class="edit-wrapper">
+  <div class="row">
+    <div class="large-12 columns">
+      <tags-input ng-show="editMode" ng-model="currentNote.tags">
+          <auto-complete source="loadTags($query)"></auto-complete>
+      </tags-input>
+      <div ng-show="!editMode" class="display-tags">
+        <p>
+          <span class="label" ng-repeat="tag in currentNote.tags">{{tag.text}}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <form ng-submit="save($event)" method="post">
+    <div class="row">
+      <div class="large-12 columns">
+        <h3 ng-show="!editMode">{{currentNote.title}}</h3>
+        <input ng-show="editMode" type="text" class="form-control note-title" placeholder="Title" ng-model="currentNote.title">
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <button type="button" class="button tiny" ng-model="editMode" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">Edit</button>
+        <button ng-show="editMode" class="button tiny" type="submit">Save</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <div ng-show="editMode" ui-ace="{showGutter: false, useWrapMode: true, mode: 'markdown'}" class="note-content" ng-model="currentNote.content"></div>
+        <div ng-show="!editMode" ng-bind-html="highlight()" class="panel"></div>
+      </div>
+    </div>
+  </form>
+</div>

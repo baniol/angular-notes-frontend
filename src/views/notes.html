@@ -1,0 +1,9 @@
+<div class="off-canvas-wrap" ng-class="{'move-right': sideVisible}">
+  <div ng-if="currentUser" class="inner-wrap">
+    <div class="row main-columns">
+      <a class="left-off-canvas-toggle"><span class="fa fa-chevron-right"></span></a>
+      <div ui-view="list"></div>
+      <div ui-view="details">Pick a note</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container" ng-keydown="keyPress($event)">
+  <div class="row row-centered">
+    <!--<div class="large-4 centered columns">-->
+    <div class="large-4 large-centered columns">
+      <form method="post" ng-submit="signup()" name="signupForm" novalidate>
+        <fieldset>
+          <legend>Signup</legend>
+          <label ng-class="{ 'error' : signupForm.username.$invalid && signupForm.username.$dirty }">User name
+            <input class="input-lg" type="text" name="username" ng-model="username" placeholder="Name">
+          </label>
+          <small class="error" ng-show="signupForm.username.$dirty && signupForm.username.$invalid">
+            <div ng-show="signupForm.username.$error.server">{{signupForm.username.$error.server}}</div>
+          </small>
+          <label ng-class="{ 'error' : signupForm.email.$invalid && signupForm.email.$dirty }">Email
+            <input class="input-lg" type="email" id="email" name="email" ng-model="email" placeholder="Email">
+          </label>
+          <small class="error" ng-show="signupForm.email.$dirty && signupForm.email.$invalid">
+            <div ng-show="signupForm.email.$error.server">{{signupForm.email.$error.server}}</div>
+          </small>
+          <label ng-class="{ 'error' : signupForm.password.$invalid && signupForm.password.$dirty }">Password
+            <input class="input-lg" type="password" value="" name="password" ng-model="password" placeholder="Password">
+          </label>
+          <small class="error" ng-show="signupForm.password.$dirty && signupForm.password.$invalid">
+            <div ng-show="signupForm.password.$error.server">{{signupForm.password.$error.server}}</div>
+          </small>
+          <button type="submit" ng-disabled="signupForm.$invalid || inProgress" class="button small">
+            <span data-animation="true" ng-show="inProgress" class="fa fa-refresh fa-spin"></span>
+            <span>Sign up</span>
+          </button>
+          <div><a ui-sref="login">Log in</a></div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

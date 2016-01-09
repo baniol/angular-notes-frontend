@@ -1,0 +1,6 @@
+<div class="row tag-cloud">
+  <div class="small-11 medium-12 large-12 columns list-wrapper">
+    <span  class="label" ng-repeat="tag in userTags | orderBy:'text'" type="button" ng-click="filterByTag(tag.text)" ng-class="{warning: tag.text == queryTag}">{{tag.text}} ({{tag.number}})</span>
+  </div>
+</div>
+<a class="close-reveal-modal" ng-click="cancel()">&#215;</a>

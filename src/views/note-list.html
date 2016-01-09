@@ -1,0 +1,11 @@
+<aside ng-if="currentUser" class="left-off-canvas-menu">
+   <div class="list-wrapper">
+    <ul class="pricing-table" ui-sortable="sortableOptions" ng-model="notes">
+      <li class="list-group-item note-item" ng-repeat="note in notes | filter:queryTag:true | filter:searchString" ng-click="select(note)" ng-class="{title:note._id == currentId, 'bullet-item': note._id != currentId}">
+        <i ng-click="delete(note, $event)" class="fa fa-trash medium remove right"></i>
+        <!--<span class="ion-arrow-move move"></span>-->
+        {{note.title}}
+      </li>
+    </ul>
+  </div>
+</aside>
